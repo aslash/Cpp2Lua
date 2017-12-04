@@ -3,3 +3,5 @@
 *.pdb
 *.cache
 bin/Debug/Cpp2Lua.exe.config
+bin/
+obj/
