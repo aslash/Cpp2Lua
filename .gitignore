@@ -1,0 +1,5 @@
+
+*.exe
+*.pdb
+*.cache
+bin/Debug/Cpp2Lua.exe.config
