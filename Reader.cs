@@ -44,7 +44,7 @@ namespace Cpp2Lua
             Console.ReadKey();
         }
 
-        public ArrayList ReadNormalHeadFile(string file)
+        public ArrayList ReadNormalHeadFile(string file, bool included = false)
         {
             FileStream readerStream = new FileStream(file, FileMode.Open);
             int fsLen = (int)readerStream.Length;
@@ -105,7 +105,7 @@ namespace Cpp2Lua
                 string[] strArr = structStr.Split(new string[] { "struct" }, StringSplitOptions.RemoveEmptyEntries);
 
                 Struct str = new Struct();
-                str.Construct(structStr, file);                              
+                str.Construct(structStr, file, included);                              
                 myStr = myStr.Remove(0, tempIndex);   
              
                 if (Util.IsIgnoreStruct(str.name) == false)

@@ -10,11 +10,15 @@ namespace Cpp2Lua
         public string fileName;
         public string name;
 
+        // 只是被包括的结构体类型，不生成到文件
+        public bool included = false;
+
         public System.Collections.ArrayList memberList = new System.Collections.ArrayList();
 
-        public void Construct(string s, string file = "")
+        public void Construct(string s, string file = "", bool incl = false)
         {
             fileName = file;
+            included = incl;
 
             // 构造名字
             s = s.TrimStart().TrimEnd();
@@ -252,7 +256,7 @@ namespace Cpp2Lua
 
             // return self;    --返回自身
             // end
-            sb.Append(Environment.NewLine).Append("\treturn self").Append(Environment.NewLine).Append("end").Append(Environment.NewLine).Append(Environment.NewLine).Append(Environment.NewLine);
+            sb.Append(Environment.NewLine).Append("\treturn self;").Append(Environment.NewLine).Append("end").Append(Environment.NewLine).Append(Environment.NewLine).Append(Environment.NewLine);
 
             sb.Append("----------编码----------------").Append(Environment.NewLine);
             // function LoginReq:WriteToBuffer()

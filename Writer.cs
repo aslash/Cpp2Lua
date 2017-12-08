@@ -18,7 +18,7 @@ namespace Cpp2Lua
             for (int i = 0; i < list.Count; i ++)
             {
                 Struct st = list[i] as Struct;
-                if (st != null)
+                if (st != null && st.included == false)
                 {
                     sb.Append(st.GetStructDefineString());                          
                 }

@@ -130,7 +130,7 @@ namespace Cpp2Lua
             StringBuilder sb = new StringBuilder();            
             string tStr = this.type.ToLower();
             bool structArr = false;
-            if (tStr == "char" || tStr == "uchar")
+            if (tStr == "char")
             {
                 if (length > 1)
                 {
@@ -141,6 +141,20 @@ namespace Cpp2Lua
                     sb.Append("\tself.").Append(name).Append("=").Append("buffer:ReadByte()");
                 }
 
+            }
+            else if (tStr == "uchar")
+            {
+                if (length > 1)
+                {
+                    sb.Append("\tself.").Append(name).Append(" = {};").Append(Environment.NewLine);
+                    sb.Append("\tfor i = 1, ").Append(length.ToString()).Append(", 1 do").Append(Environment.NewLine);
+                    sb.Append("\t\tself.").Append(name).Append("[i]=").Append("buffer:ReadByte();").Append(Environment.NewLine);
+                    sb.Append("\tend");
+                }
+                else
+                {
+                    sb.Append("\tself.").Append(name).Append("=").Append("buffer:ReadByte()");
+                }
             }
             else if (tStr == "int")
             {
