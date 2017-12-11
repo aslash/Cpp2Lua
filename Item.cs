@@ -16,7 +16,7 @@ namespace Cpp2Lua
         {
         }        
         public void Construct(string key, string value)
-        {
+        {            
             type = key.Trim();
             if (value.Contains("[") == false)
             {
@@ -55,6 +55,7 @@ namespace Cpp2Lua
 
             if (Util.IsCustomizeType(type))
             {
+                type = DefineValue.CUSTOM_PREFIX + type;
                 DefineValue.AddStructRefCount(type);
             }
         }

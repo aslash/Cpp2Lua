@@ -35,6 +35,8 @@ namespace Cpp2Lua
                 name = name.TrimStart().TrimEnd();
             }
 
+            name = DefineValue.CUSTOM_PREFIX + name;
+
             // 构造成员列表
             string str = s.Substring(s.IndexOf("{") + 1, s.IndexOf("}") - s.IndexOf("{") - 1);            
                         

@@ -79,7 +79,7 @@ namespace Cpp2Lua
         public static bool IsCustomizeType(string key)
         {
             key = key.ToLower();
-            if (key == "char" || key == "uchar" || key == "float" || key == "int" || key == "uint" || key == "short")
+            if (key == "char" || key == "uchar" || key == "float" || key == "int" || key == "uint" || key == "short" || key == "ushort")
             {
                 return false;
             }

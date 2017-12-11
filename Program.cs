@@ -18,7 +18,7 @@ namespace Cpp2Lua
 
             string protocolDir = @"F:\Workspace\Douwan_proj\monitor\ClientProtocols\";
 
-            if (args == null || args.Length < 2)
+            if (args == null || args.Length == 0)
             {
                 args = new string[] { "", protocolDir + "BaseDataStruct.h-" +  
                     protocolDir + "ConfigStruct.h-" +
@@ -26,14 +26,16 @@ namespace Cpp2Lua
                     protocolDir + "UserDataStruct.h-" +
                     protocolDir + "UserMiscelCommonStruct.h-" +
                     protocolDir + "UserBaseCommonStruct.h",
-                    outputFile };
+                    outputFile,
+                    "Game_"};
             }
-            
-            if (args != null && args.Length == 2)
+            else if (args.Length < 4)
             {
-                args = new string[] { "", args[0], args[1] };
+                Console.WriteLine("[Error]参数列表不正确，应该为4个参数");
+                Console.WriteLine("[Error]参数格式：includeFiles inputFiles outputFiles namePrefix");
+                return;
             }
-            
+
             for (int i = 0; i < args.Length; i ++)
             {
                 Console.WriteLine(args[i]);
@@ -43,6 +45,7 @@ namespace Cpp2Lua
             ArrayList list = new ArrayList();
 
             string[] includeFiles = args[0].Split('-');
+            DefineValue.CUSTOM_PREFIX = args[3];
             Console.WriteLine("INCLUDE FILE SIZE=" + includeFiles.Length);
             for (int i = 0; i < includeFiles.Length; i++)
             {
@@ -59,11 +62,12 @@ namespace Cpp2Lua
             for (int i = 0; i < files.Length; i++)
             {
                 Console.WriteLine("[Program.cs]Process File:" + files[i]);
-                list.AddRange(reader.ReadNormalHeadFile(files[i]));
+                list.AddRange(reader.ReadNormalHeadFile(files[i], false));
             }
 
             Writer writer = new Writer();
-            writer.WriteLuaDefineFile(list, args[args.Length - 1]);
+            string output = args[2];
+            writer.WriteLuaDefineFile(list, output);
 
             int h = 0;
             Console.Write(h);

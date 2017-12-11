@@ -8,6 +8,9 @@ namespace Cpp2Lua
 {
     class DefineValue
     {
+        // 前缀
+        public static string CUSTOM_PREFIX = "";
+
         // 宏定义常亮
         static Dictionary<string, int> defineValue = new Dictionary<string, int>();  
      
