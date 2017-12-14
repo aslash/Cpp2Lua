@@ -262,11 +262,28 @@ namespace Cpp2Lua
             else
             {                
                 string tStr = this.type.ToLower();
-                if (tStr == "char" || tStr == "uchar")
+                if (tStr == "char")
                 {
                     if (length > 1)
                     {
                         sb.Append("\tMessageByteBuffer.").Append("WriteBytes(self.").Append(name).Append(", ").Append(length.ToString()).Append(");").Append(Environment.NewLine);
+                    }
+                    else
+                    {
+                        sb.Append("\tMessageByteBuffer.").Append("WriteByte(self.").Append(name).Append(");").Append(Environment.NewLine);
+                    }
+                }
+                else if (tStr == "uchar")
+                {
+                    if (length > 1)
+                    {
+                        sb.Append("\tfor i = 1, ").Append(length).Append(", 1 do").Append(Environment.NewLine);
+                        sb.Append("\t\tif self.").Append(name).Append("[i] then").Append(Environment.NewLine);
+                        sb.Append("\t\t\tMessageByteBuffer.WriteByte(self.").Append(name).Append("[i]);").Append(Environment.NewLine);
+                        sb.Append("\t\telse").Append(Environment.NewLine);
+                        sb.Append("\t\t\tMessageByteBuffer.WriteByte(0);").Append(Environment.NewLine);
+                        sb.Append("\t\tend").Append(Environment.NewLine);
+                        sb.Append("\tend").Append(Environment.NewLine);
                     }
                     else
                     {

@@ -27,7 +27,7 @@ namespace Cpp2Lua
                     protocolDir + "UserMiscelCommonStruct.h-" +
                     protocolDir + "UserBaseCommonStruct.h",
                     outputFile,
-                    "Game_"};
+                    ""};
             }
             else if (args.Length < 4)
             {
