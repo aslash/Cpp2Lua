@@ -108,7 +108,7 @@ namespace Cpp2Lua
                 str.Construct(structStr, file, included);                              
                 myStr = myStr.Remove(0, tempIndex);   
              
-                if (Util.IsIgnoreStruct(str.name) == false)
+                if (Util.IsIgnoreStruct(str.name) == false && str.unexported == false)
                 {
                     structList.Add(str);
                 }                

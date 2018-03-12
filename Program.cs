@@ -11,23 +11,34 @@ namespace Cpp2Lua
     {
         public static void Main(string[] args)
         {
+           
             string includeFile = "";
             string inputFile = @"F:\Workspace\Cpp2Lua\CommStruct.h";
-            string outputFile = @"F:\Workspace\Douwan_proj\client\trunk\Assets\GameFramework\Lua\Message\MessageDef.lua";
+            //string outputFile = @"F:\Workspace\Douwan_proj\client\trunk\Assets\GameFramework\Lua\Message\MessageDef.lua";
             Console.WriteLine("args=" + args.Length);
 
-            string protocolDir = @"F:\Workspace\Douwan_proj\monitor\ClientProtocols\";
-
+            //string protocolDir = @"F:\W  orkspace\Douwan_proj\monitor\ClientProtocols\";
+            string protocolDir = @"F:\Workspace\Douwan_proj\games\FightLandbord_1\ClientProtocols\";
+            string outputFile = @"F:\Workspace\Douwan_proj\client\trunk\Assets\GameFramework\Lua\DouWan\DouDiZhu\CoinGame\Message\DDZMessage.lua";
             if (args == null || args.Length == 0)
             {
-                args = new string[] { "", protocolDir + "BaseDataStruct.h-" +  
+                /*args = new string[] { "", protocolDir + "BaseDataStruct.h-" +  
                     protocolDir + "ConfigStruct.h-" +
                     protocolDir + "BaseCommonStruct.h-" +
                     protocolDir + "UserDataStruct.h-" +
                     protocolDir + "UserMiscelCommonStruct.h-" +
-                    protocolDir + "UserBaseCommonStruct.h",
+                    protocolDir + "UserBaseCommonStruct.h-" +
+                    protocolDir + "CrossHouseCardFactory.h",
                     outputFile,
                     ""};
+                */
+                args = new string[] { "", protocolDir + "BaseDataStruct.h-" +  
+                    protocolDir + "ConfigStruct.h-" +
+                    /*protocolDir + "CrossHouseCardFactory.h-" +*/
+                    protocolDir + "UserDataStruct.h-" +
+                    protocolDir + "UserBaseCommonStruct.h",
+                    outputFile,
+                    "DDZ"};
             }
             else if (args.Length < 4)
             {

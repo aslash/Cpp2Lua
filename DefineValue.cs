@@ -19,6 +19,9 @@ namespace Cpp2Lua
 
         static Dictionary<string, int> structRefCount = new Dictionary<string, int>();
 
+        // 不导出的类型
+        static Dictionary<string, int> unexportedType = new Dictionary<string, int>();
+
         public static void PutDefineValue(string key, int value)
         {
             int val = 0;
@@ -43,6 +46,26 @@ namespace Cpp2Lua
             {
                 structSize.Add(key, size);                
             }
+        }
+
+        public static void PutUnexportedType(string key)
+        {
+            int value = 0;
+            if (unexportedType.TryGetValue(key, out value) == false)
+            {
+                unexportedType.Add(key, 1);
+            }
+        }
+
+        public static bool GetUnexportedType(string key)
+        {
+            int value = -1;
+            if (unexportedType.TryGetValue(key, out value) == true)
+            {
+                return true;
+            }
+
+            return false;
         }
         
         public static int GetStructSize(string key)

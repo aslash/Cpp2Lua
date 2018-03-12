@@ -11,7 +11,8 @@ namespace Cpp2Lua
         // 服务器自己用，客户端不解析
         public static bool IsIgnoreStruct(string name)
         {
-            if (name == "GameUserType")
+            if (name == "DDZGameUserType" || name == "GameUserType" || name == "DDZRoomType" || name == "RoomDetailLogType"
+                || name == "UnionGameRoomType" || name == "GameUnionType" || name == "GameUnionUserType")
             {
                 return true;
             }

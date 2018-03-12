@@ -9,6 +9,7 @@ namespace Cpp2Lua
     {
         public string fileName;
         public string name;
+        public bool unexported = false;
 
         // 只是被包括的结构体类型，不生成到文件
         public bool included = false;
@@ -44,11 +45,13 @@ namespace Cpp2Lua
             for (int i = 0; i < strList.Length; i++)
             {
                 //指针不处理
-                if (str.Contains("*"))
+                if (str.Contains("*") || str.Contains("vector<") || str.Contains("list<") || str.Contains("map<"))
                 {
+                    this.unexported = true;
+                    DefineValue.PutUnexportedType(name); 
                     continue;
                 }
-
+                
                 string member = Util.TrimTable(strList[i]);
                 string[] memArr;
                 if (member.Contains("\t"))
@@ -91,6 +94,10 @@ namespace Cpp2Lua
                 if (key != "" && value != "")
                 {
                     item.Construct(key, value);
+                    if (DefineValue.GetUnexportedType(item.type))
+                    {
+                        this.unexported = true;
+                    }
                     memberList.Add(item);                    
                 }                
             }
