@@ -9,6 +9,10 @@ namespace Cpp2Lua
 {
     public class Reader
     {
+	public void Test()
+	{
+	    byte[] byte = new byte[10];
+	}
         // 仅仅包含结构定义的文件
         public void ReadPureStructDef()
         {           
