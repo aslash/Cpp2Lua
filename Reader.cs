@@ -9,6 +9,10 @@ namespace Cpp2Lua
 {
     public class Reader
     {
+	public void Test2Func()
+	{
+	}
+
 	public void BranchFunc()
 	{
 	}
