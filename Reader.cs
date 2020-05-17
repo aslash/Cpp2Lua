@@ -9,6 +9,9 @@ namespace Cpp2Lua
 {
     public class Reader
     {
+	public void BranchFunc()
+	{
+	}
 	public void Test()
 	{
 	    byte[] byte = new byte[10];
