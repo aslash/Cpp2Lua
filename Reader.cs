@@ -11,6 +11,7 @@ namespace Cpp2Lua
     {
 	public void BranchFunc()
 	{
+	    Console.WriteLine("-----");
 	}
 	public void Test()
 	{
