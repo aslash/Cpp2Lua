@@ -11,7 +11,8 @@ namespace Cpp2Lua
     {
         public static void Main(string[] args)
         {
-           
+			
+			public string test1branch;
             string includeFile = "";
             string inputFile = @"F:\Workspace\Cpp2Lua\CommStruct.h";
             //string outputFile = @"F:\Workspace\Douwan_proj\client\trunk\Assets\GameFramework\Lua\Message\MessageDef.lua";
