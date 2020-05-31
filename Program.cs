@@ -11,7 +11,8 @@ namespace Cpp2Lua
     {
         public static void Main(string[] args)
         {
-           
+			
+			public string test1branch;
             public int testValue = 200;
             string includeFile = "";
             string inputFile = @"F:\Workspace\Cpp2Lua\CommStruct.h";
